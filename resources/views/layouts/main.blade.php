@@ -6,6 +6,7 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Exist</title>
      <script src="https://cdn.tailwindcss.com"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet"/>
 </head>
 
