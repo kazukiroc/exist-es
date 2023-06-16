@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Characteristic;
 
 class ConsultationController extends Controller
 {
@@ -11,7 +12,8 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        return view('consultation.index');
+        $characteristics = Characteristic::get();
+        return view('consultation.index', compact('characteristics'));
     }
 
     /**
