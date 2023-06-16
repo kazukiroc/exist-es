@@ -27,13 +27,13 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `characteristics`
 --
 
-CREATE TABLE `characteristics` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `kode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ciri` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `characteristics` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `kode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `ciri` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `characteristics`
@@ -155,30 +155,30 @@ INSERT INTO `characteristics` (`id`, `kode`, `ciri`, `created_at`, `updated_at`)
 -- Struktur dari tabel `failed_jobs`
 --
 
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `failed_jobs` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
+-- -- --------------------------------------------------------
 
---
--- Struktur dari tabel `intelligences`
---
+-- --
+-- -- Struktur dari tabel `intelligences`
+-- --
 
-CREATE TABLE `intelligences` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `kode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prodi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `intelligences` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `kode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `prodi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `intelligences`
@@ -201,13 +201,13 @@ INSERT INTO `intelligences` (`id`, `kode`, `jenis`, `prodi`, `created_at`, `upda
 -- Struktur dari tabel `knowledge`
 --
 
-CREATE TABLE `knowledge` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `ciri` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `knowledge` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `ciri` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `knowledge`
@@ -222,11 +222,11 @@ INSERT INTO `knowledge` (`id`, `ciri`, `jenis`, `created_at`, `updated_at`) VALU
 -- Struktur dari tabel `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `migrations` (
+--   `id` int(10) UNSIGNED NOT NULL,
+--   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `batch` int(11) NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `migrations`
@@ -248,11 +248,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Struktur dari tabel `password_reset_tokens`
 --
 
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `password_reset_tokens` (
+--   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -260,18 +260,18 @@ CREATE TABLE `password_reset_tokens` (
 -- Struktur dari tabel `personal_access_tokens`
 --
 
-CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `personal_access_tokens` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+--   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `last_used_at` timestamp NULL DEFAULT NULL,
+--   `expires_at` timestamp NULL DEFAULT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -279,13 +279,13 @@ CREATE TABLE `personal_access_tokens` (
 -- Struktur dari tabel `studies`
 --
 
-CREATE TABLE `studies` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `studies` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `studies`
@@ -341,16 +341,16 @@ INSERT INTO `studies` (`id`, `nama`, `keterangan`, `created_at`, `updated_at`) V
 -- Struktur dari tabel `users`
 --
 
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `users` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `email_verified_at` timestamp NULL DEFAULT NULL,
+--   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `users`
@@ -366,114 +366,114 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 -- Indeks untuk tabel `characteristics`
 --
-ALTER TABLE `characteristics`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `characteristics`
+--   ADD PRIMARY KEY (`id`);
 
---
--- Indeks untuk tabel `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+-- --
+-- -- Indeks untuk tabel `failed_jobs`
+-- --
+-- ALTER TABLE `failed_jobs`
+--   ADD PRIMARY KEY (`id`),
+--   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
---
--- Indeks untuk tabel `intelligences`
---
-ALTER TABLE `intelligences`
-  ADD PRIMARY KEY (`id`);
+-- --
+-- -- Indeks untuk tabel `intelligences`
+-- --
+-- ALTER TABLE `intelligences`
+--   ADD PRIMARY KEY (`id`);
 
---
--- Indeks untuk tabel `knowledge`
---
-ALTER TABLE `knowledge`
-  ADD PRIMARY KEY (`id`);
+-- --
+-- -- Indeks untuk tabel `knowledge`
+-- --
+-- ALTER TABLE `knowledge`
+--   ADD PRIMARY KEY (`id`);
 
---
--- Indeks untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
+-- --
+-- -- Indeks untuk tabel `migrations`
+-- --
+-- ALTER TABLE `migrations`
+--   ADD PRIMARY KEY (`id`);
 
---
--- Indeks untuk tabel `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
+-- --
+-- -- Indeks untuk tabel `password_reset_tokens`
+-- --
+-- ALTER TABLE `password_reset_tokens`
+--   ADD PRIMARY KEY (`email`);
 
---
--- Indeks untuk tabel `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+-- --
+-- -- Indeks untuk tabel `personal_access_tokens`
+-- --
+-- ALTER TABLE `personal_access_tokens`
+--   ADD PRIMARY KEY (`id`),
+--   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+--   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
---
--- Indeks untuk tabel `studies`
---
-ALTER TABLE `studies`
-  ADD PRIMARY KEY (`id`);
+-- --
+-- -- Indeks untuk tabel `studies`
+-- --
+-- ALTER TABLE `studies`
+--   ADD PRIMARY KEY (`id`);
 
---
--- Indeks untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+-- --
+-- -- Indeks untuk tabel `users`
+-- --
+-- ALTER TABLE `users`
+--   ADD PRIMARY KEY (`id`),
+--   ADD UNIQUE KEY `users_email_unique` (`email`);
 
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
+-- --
+-- -- AUTO_INCREMENT untuk tabel yang dibuang
+-- --
 
---
--- AUTO_INCREMENT untuk tabel `characteristics`
---
-ALTER TABLE `characteristics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `characteristics`
+-- --
+-- ALTER TABLE `characteristics`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
---
--- AUTO_INCREMENT untuk tabel `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- --
+-- ALTER TABLE `failed_jobs`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT untuk tabel `intelligences`
---
-ALTER TABLE `intelligences`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `intelligences`
+-- --
+-- ALTER TABLE `intelligences`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
---
--- AUTO_INCREMENT untuk tabel `knowledge`
---
-ALTER TABLE `knowledge`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `knowledge`
+-- --
+-- ALTER TABLE `knowledge`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `migrations`
+-- --
+-- ALTER TABLE `migrations`
+--   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
---
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- --
+-- ALTER TABLE `personal_access_tokens`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT untuk tabel `studies`
---
-ALTER TABLE `studies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `studies`
+-- --
+-- ALTER TABLE `studies`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
---
--- AUTO_INCREMENT untuk tabel `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
+-- --
+-- -- AUTO_INCREMENT untuk tabel `users`
+-- --
+-- ALTER TABLE `users`
+--   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+-- COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+-- /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+-- /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

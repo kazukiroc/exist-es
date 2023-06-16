@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function consuls()
+    {
+        $this->hasMany(Consul::class, 'id_expert');
+    }
+    public function result()
+    {
+        $this->hasMany(Result::class, 'id_user');
+    }
 }

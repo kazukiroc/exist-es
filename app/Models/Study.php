@@ -9,8 +9,15 @@ class Study extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama',
-        'keterangan',
-    ];
+    // protected $fillable = [
+    //     'nama',
+    //     'keterangan',
+    // ];
+    protected $guarded = ['id'];
+
+    public function reccomendation()
+    {
+        $this->hasMany(Reccomendation::class, 'id_study');
+    }
+
 }

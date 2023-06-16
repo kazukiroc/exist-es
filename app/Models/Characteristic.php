@@ -9,8 +9,15 @@ class Characteristic extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'kode',
-        'ciri',
-    ];
+    // protected $fillable = [
+    //     'kode',
+    //     'ciri',
+    // ];
+    protected $guarded = ['id'];
+
+    public function knowledges()
+    {
+        $this->hasMany(Knowledge::class, 'id_character');
+    }
+
 }
