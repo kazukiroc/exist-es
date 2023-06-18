@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('knowledge', function (Blueprint $table) {
             $table->id();
-            $table->string('id_intelligence');
-            $table->string('id_character');
+            $table->unsignedBigInteger('id_intelligence');
+            $table->unsignedBigInteger('id_character');
             $table->foreign('id_intelligence')->references('id')->on('intelligences')->onDelete('cascade');
             $table->foreign('id_character')->references('id')->on('characteristics')->onDelete('cascade');
             $table->timestamps();
