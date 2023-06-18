@@ -13,7 +13,7 @@ class ConsultationController extends Controller
     public function index()
     {
         $characteristics = Characteristic::get();
-        return view('consultation.index', compact('characteristics'));
+        return view('dashboard.consultation.index', compact('characteristics'));
     }
 
     /**

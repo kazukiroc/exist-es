@@ -16,7 +16,7 @@ class KnowledgeController extends Controller
     {
         $knowledge = Knowledge::get();
 
-        return view('knowledge.index', compact('knowledge'));
+        return view('dashboard.knowledge.index', compact('knowledge'));
     }
 
     /**
@@ -27,7 +27,7 @@ class KnowledgeController extends Controller
         $characteristics = Characteristic::get();
         $intelligences = Intelligence::get();
 
-        return view('knowledge.create', compact('characteristics', 'intelligences'));
+        return view('dashboard.knowledge.create', compact('characteristics', 'intelligences'));
     }
 
     /**
@@ -63,7 +63,7 @@ class KnowledgeController extends Controller
 
         $knowledge = Knowledge::findOrFail($id);
 
-        return view('knowledge.edit', compact('knowledge', 'characteristics', 'intelligences'));
+        return view('dashboard.knowledge.edit', compact('knowledge', 'characteristics', 'intelligences'));
     }
 
     /**

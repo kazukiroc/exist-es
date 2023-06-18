@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RuleController;
 use App\Http\Controllers\StudyController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,24 +24,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/consultation');
+    return redirect('/dashboard');
 });
-
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('/register', 'index')->name('register')->middleware('guest');
+    Route::post('/register', 'store');
+});
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
     Route::post('/logout', 'logout');
 });
-
-Route::controller(RegisterController::class)->group(function () {
-    Route::get('/register', 'index')->middleware('guest');
-    Route::post('/register', 'store');
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    // Route::resource('/profil-saya', ProfilIndex::class);
+    Route::group(['prefix' =>'admin', 'middleware' => ['role:admin']], function () {
+        Route::get('/manage-user', [UserController::class, 'index']);
+    });
+    Route::group(['middleware' => ['role:expert'], 'prefix' => 'expert'], function () {
+        Route::resource('/characteristic', CharacteristicController::class);
+        Route::resource('/intelligence', IntelligenceController::class);
+        Route::resource('/study', StudyController::class);
+        Route::resource('/knowledge', KnowledgeController::class);
+        Route::resource('/rules', RuleController::class);
+    });
+    Route::group( ['prefix' => 'user', 'middleware' => ['role:user']], function () {
+        Route::resource('/consultation', ConsultationController::class);
+    });
 });
-
-// Route::get('/home', [HomeController::class, 'index']);
-Route::resource('/consultation', ConsultationController::class)->middleware('auth');
-Route::resource('/characteristic', CharacteristicController::class)->middleware('auth');
-Route::resource('/intelligence', IntelligenceController::class)->middleware('auth');
-Route::resource('/study', StudyController::class)->middleware('auth');
-Route::resource('/knowledge', KnowledgeController::class)->middleware('auth');
-Route::resource('/rules', RuleController::class)->middleware('auth');
