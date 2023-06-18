@@ -16,7 +16,7 @@ class CharacteristicController extends Controller
         $characteristics = Characteristic::get();
         // $characteristics = DB::table('characteristics')->paginate(7);
 
-        return view('characteristic.index', compact('characteristics'));
+        return view('dashboard.characteristic.index', compact('characteristics'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CharacteristicController extends Controller
      */
     public function create()
     {
-        return view('characteristic.create');
+        return view('dashboard.characteristic.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class CharacteristicController extends Controller
     {
         $characteristics = Characteristic::findOrFail($id);
 
-        return view('characteristic.edit', compact('characteristics'));
+        return view('dashboard.characteristic.edit', compact('characteristics'));
     }
 
     /**

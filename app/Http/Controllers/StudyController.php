@@ -16,7 +16,7 @@ class StudyController extends Controller
         $studies = Study::get();
         // $studies = DB::table('studies')->paginate(7);
 
-        return view('study.index', compact('studies'));
+        return view('dashboard.study.index', compact('studies'));
     }
 
     /**
@@ -24,7 +24,7 @@ class StudyController extends Controller
      */
     public function create()
     {
-        return view('study.create');
+        return view('dashboard.study.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class StudyController extends Controller
     {
         $studies = Study::findOrFail($id);
 
-        return view('study.edit', compact('studies'));
+        return view('dashboard.study.edit', compact('studies'));
     }
 
     /**

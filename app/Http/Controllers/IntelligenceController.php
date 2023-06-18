@@ -15,7 +15,7 @@ class IntelligenceController extends Controller
     {
         $intelligences = Intelligence::get();
 
-        return view('intelligence.index', compact('intelligences'));
+        return view('dashboard.intelligence.index', compact('intelligences'));
     }
 
     /**
@@ -25,7 +25,7 @@ class IntelligenceController extends Controller
     {
         $studies = Study::get();
 
-        return view('intelligence.create', compact('studies'));
+        return view('dashboard.intelligence.create', compact('studies'));
     }
 
     /**
@@ -64,7 +64,7 @@ class IntelligenceController extends Controller
 
         $intelligences = Intelligence::findOrFail($id);
 
-        return view('intelligence.edit', compact('intelligences', 'studies'));
+        return view('dashboard.intelligence.edit', compact('intelligences', 'studies'));
     }
 
     /**
