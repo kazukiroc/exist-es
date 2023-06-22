@@ -10,7 +10,9 @@ use App\Http\Controllers\RuleController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReccomendationController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
         Route::resource('/study', StudyController::class);
         Route::resource('/knowledge', KnowledgeController::class);
         Route::resource('/rules', RuleController::class);
+        Route::resource('/rekomendasi', ReccomendationController::class);
     });
     Route::group( ['prefix' => 'user', 'middleware' => ['role:user']], function () {
         Route::resource('/consultation', ConsultationController::class);

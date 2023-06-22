@@ -43,6 +43,12 @@
                 </a>
             </li>
             <li>
+                <a href="/dashboard/expert/rekomendasi" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('rekomendasi*') ? 'bg-indigo-200' : '' }}">
+                    <ion-icon name="school" class="w-6 h-6 text-indigo-900 transition duration-75 400 group-hover:text-indigo-900" fill="currentColor"></ion-icon>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Rekomendasi</span>
+                </a>
+            </li>
+            <li>
                 <a href="/dashboard/expert/knowledge" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('knowledge*') ? 'bg-indigo-200' : '' }}">
                     <ion-icon name="server" class="w-6 h-6 text-indigo-900 transition duration-75 group-hover:text-indigo-900" fill="currentColor"></ion-icon>
                     <span class="flex-1 ml-3 whitespace-nowrap">Basis Pengetahuan</span>
