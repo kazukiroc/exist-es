@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
         Route::resource('/knowledge', KnowledgeController::class);
         Route::resource('/rules', RuleController::class);
         Route::resource('/rekomendasi', ReccomendationController::class);
+        Route::resource('/consultation', ExpertConsultationController::class);
     });
     Route::group( ['prefix' => 'user', 'middleware' => ['role:user']], function () {
         Route::resource('/consultation', ConsultationController::class);

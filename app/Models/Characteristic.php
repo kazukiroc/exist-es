@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Characteristic extends Model
 {
@@ -25,6 +26,13 @@ class Characteristic extends Model
 //        $lastCompanyId=(int)substr($lastCompanyId , -3);
        $generatedKode = 'C-'.$nextId;
        return $generatedKode;
+    }
+
+    public function intelligences(): BelongsToMany
+    {
+        return $this->belongsToMany(Intelligence::class, 'knowledge', 'id_character', 'id_intelligence')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(Knowledge::class);
     }
 
 }

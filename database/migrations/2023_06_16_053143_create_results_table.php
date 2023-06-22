@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_knowledge');
             $table->foreign('id_consul')->references('id')->on('consuls')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_knowledge')->references('id')->on('knowledge')->onDelete('cascade');
+            $table->foreign('id_character')->references('id')->on('character')->onDelete('cascade');
             $table->unsignedBigInteger('skor')->nullable();
             $table->timestamps();
         });

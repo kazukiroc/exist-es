@@ -8,6 +8,7 @@
                 </a>
             </li>
             @role('admin')
+            <li class="fw-semi-bold text-dark">Menu Admin</li>
             <li>
                 <a href="/dashboard/admin/manage-user" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('dashboard') ? 'bg-indigo-200' : '' }}">
                     <ion-icon name="happy" class="w-6 h-6 text-indigo-900 transition duration-75 group-hover:text-indigo-900" fill="currentColor"></ion-icon>
@@ -16,6 +17,7 @@
             </li>
             @endrole
             @role('user')
+            <li class="fw-semi-bold text-dark">Menu User</li>
             <li>
                 <a href="/dashboard/user/consultation" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('*consultation') ? 'bg-indigo-200' : '' }}">
                     <ion-icon name="happy" class="w-6 h-6 text-indigo-900 transition duration-75 group-hover:text-indigo-900" fill="currentColor"></ion-icon>
@@ -24,6 +26,13 @@
             </li>
             @endrole
             @role('expert')
+            <li class="fw-semi-bold text-dark">Menu Pakar</li>
+            <li>
+                <a href="/dashboard/expert/consultation" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('*consultation') ? 'bg-indigo-200' : '' }}">
+                    <ion-icon name="library" class="w-6 h-6 text-indigo-900 transition duration-75 group-hover:text-indigo-900" fill="currentColor"></ion-icon>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Konsultasi</span>
+                </a>
+            </li>
             <li>
                 <a href="/dashboard/expert/characteristic" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('characteristic*') ? 'bg-indigo-200' : '' }}">
                     <ion-icon name="library" class="w-6 h-6 text-indigo-900 transition duration-75 group-hover:text-indigo-900" fill="currentColor"></ion-icon>

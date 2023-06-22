@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Characteristic;
 use App\Models\Intelligence;
 use App\Models\Knowledge;
+use App\Models\Reccomendation;
+use App\Models\Study;
 use Illuminate\Http\Request;
 
 class KnowledgeController extends Controller
@@ -14,9 +16,11 @@ class KnowledgeController extends Controller
      */
     public function index()
     {
-        $knowledge = Knowledge::get();
-
-        return view('dashboard.knowledge.index', compact('knowledge'));
+        return view('dashboard.knowledge.index',[
+            'intelligences' => Intelligence::all(),
+            'characters' => Characteristic::all(),
+            'knowledges' => Knowledge::all()
+        ]);
     }
 
     /**
@@ -24,10 +28,15 @@ class KnowledgeController extends Controller
      */
     public function create()
     {
-        $characteristics = Characteristic::get();
-        $intelligences = Intelligence::get();
-
-        return view('dashboard.knowledge.create', compact('characteristics', 'intelligences'));
+//        $characteristics = Characteristic::get();
+//        $intelligences = Intelligence::get();
+//        $intel = Intelligence::whereNotIn('id', Knowledge::all()->pluck('id'))->get();
+//        return dd($intel);
+//        return view('dashboard.knowledge.create', [
+//            'intelligences' => Intelligence::whereNotIn('id', Knowledge::all()->pluck('id')),
+//            'characters' => Characteristic::all(),
+//            'knowledge' => Knowledge::all()
+//        ]);
     }
 
     /**
@@ -35,14 +44,16 @@ class KnowledgeController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'ciri' => 'required',
-            'jenis' => 'required'
-        ]);
+//        $validatedData = $request->validate([
+//            'ciri' => 'required',
+//            'jenis' => 'required'
+//        ]);
+//
+//        Knowledge::create($validatedData);
+//
+//        return redirect('/knowledge')->with('success', 'Data berhasil ditambahkan!');
 
-        Knowledge::create($validatedData);
 
-        return redirect('/knowledge')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -58,12 +69,13 @@ class KnowledgeController extends Controller
      */
     public function edit(string $id)
     {
-        $characteristics = Characteristic::get();
-        $intelligences = Intelligence::get();
-
-        $knowledge = Knowledge::findOrFail($id);
-
-        return view('dashboard.knowledge.edit', compact('knowledge', 'characteristics', 'intelligences'));
+        $intelligence = Intelligence::findOrFail($id);
+        return view('dashboard.knowledge.edit', [
+            'intelligences' => Intelligence::all(),
+            'intelligence' => $intelligence,
+            'characters' => Characteristic::all(),
+            'knowledges' => Knowledge::all()
+        ]);
     }
 
     /**
@@ -71,19 +83,10 @@ class KnowledgeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'ciri' => 'required',
-            'jenis' => 'required'
-        ]);
+        $intelligence = Intelligence::findOrFail($id);
+        $intelligence->characters()->sync($request->character);
 
-        $knowledge = Knowledge::findOrFail($id);
-
-        $knowledge->update([
-            'ciri' => $request->ciri,
-            'jenis' => $request->jenis
-        ]);
-
-        return redirect('/knowledge')->with('success', 'Data berhasil diubah!');
+        return redirect(route('knowledge.index'))->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -91,10 +94,9 @@ class KnowledgeController extends Controller
      */
     public function destroy($id)
     {
-        $knowledge = Knowledge::findOrFail($id);
+        $intelligence = Intelligence::findOrFail($id);
+        $intelligence->characters()->detach();
 
-        $knowledge->delete();
-
-        return redirect('/knowledge')->with('success', 'Data berhasil dihapus!');
+        return redirect(route('knowledge.index'))->with('success', 'Data berhasil dihapus!');
     }
 }

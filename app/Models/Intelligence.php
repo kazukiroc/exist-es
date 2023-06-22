@@ -41,4 +41,11 @@ class Intelligence extends Model
         return $generatedKode;
     }
 
+    public function characters(): BelongsToMany
+    {
+        return $this->belongsToMany(Characteristic::class, 'knowledge', 'id_intelligence', 'id_character')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(Knowledge::class);
+    }
+
 }
