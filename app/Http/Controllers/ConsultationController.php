@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consul;
+use App\Models\ConsulMap;
+use App\Models\Intelligence;
+use App\Models\Result;
+use App\Models\UserConsul;
 use Illuminate\Http\Request;
 use App\Models\Characteristic;
+use App\Models\User;
 
 class ConsultationController extends Controller
 {
@@ -12,8 +18,12 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        $characteristics = Characteristic::get();
-        return view('dashboard.consultation.user.index', compact('characteristics'));
+        return view('dashboard.consultation.user.index', [
+            'consuls' => Consul::all(),
+            'user_consuls' => UserConsul::all(),
+            'users' => User::all(),
+            'results' => Result::all()
+        ]);
     }
 
     /**
@@ -59,8 +69,57 @@ class ConsultationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user_consul = UserConsul::findOrFail($id);
+        $user_consul->delete();
+
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
+    }
+    public function list()
+    {
+        return view('dashboard.consultation.user.list', [
+            'consuls' => Consul::all(),
+            'user_consuls' => UserConsul::all(),
+            'users' => User::all()
+        ]);
+    }
+    public function addList(Request $request)
+    {
+        UserConsul::create([
+            'id_user'=> $request->id_user,
+            'id_consul' => $request->id_consul
+        ]);
+        return redirect(route('my-consultation.list-index'))->with('success', 'Data berhasil ditambahkan!');
+    }
+    public function isiKonsul(string $id)
+    {
+        $consul = Consul::findOrFail($id);
+
+        return view('dashboard.consultation.user.fill', [
+            'characters' => Characteristic::all(),
+            'consul_maps' => ConsulMap::where('id_consul', $id),
+            'consul' => $consul,
+            'results' => Result::all()
+        ]);
+    }
+    public function simpanKonsul(Request $request, $id)
+    {
+        $consul = Consul::findOrFail($id);
+        $data = [];
+        $num = 0;
+//        $consul->characters
+        $skors = $request->skor;
+        if (!empty($skors)) {
+            foreach ($consul->characters as $character) {
+                $data[$character->id] = ['id_user' => auth()->user()->id, 'skor' =>$skors[$num]];
+                $num += 1;
+            }
+            $consul->characterResults()->sync($data);
+            $num = 0;
+            $data = [];
+        }
+//        $consul->characterResults()->sync($request->skor);
+        return redirect(route('my-consultation.index'))->with('success', 'Anda berhasil mengisi konsultasi!');
     }
 }

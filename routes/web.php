@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
         Route::get('/manage-user', [UserController::class, 'index']);
     });
     Route::group(['middleware' => ['role:expert'], 'prefix' => 'expert'], function () {
+        Route::get('/exp-consultation/{consul:id}/pertanyaan', [ExpertConsultationController::class, 'tambahPertanyaan'])->name('tambah-tanya');
+        Route::put('/exp-consultation/{consul:id}/pertanyaan', [ExpertConsultationController::class, 'simpanPertanyaan'])->name('simpan-tanya');
         Route::resource('/characteristic', CharacteristicController::class);
         Route::resource('/intelligence', IntelligenceController::class);
         Route::resource('/study', StudyController::class);
@@ -52,11 +54,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
         Route::resource('/rules', RuleController::class);
         Route::resource('/rekomendasi', ReccomendationController::class);
         Route::resource('/exp-consultation', ExpertConsultationController::class);
-        Route::get('/exp-consultation/{consul:id}/pertanyaan', [ExpertConsultationController::class, 'tambahPertanyaan'])->name('tambah-tanya');
-        Route::put('/exp-consultation/{consul:id}/pertanyaan', [ExpertConsultationController::class, 'simpanPertanyaan'])->name('simpan-tanya');
 
     });
     Route::group( ['prefix' => 'user', 'middleware' => ['role:user']], function () {
-        Route::resource('/consultation', ConsultationController::class);
+        Route::get('/my-consultation/list', [ConsultationController::class, 'list'])->name('my-consultation.list-index');
+        Route::get('/my-consultation/{consul:id}/isi-konsultasi', [ConsultationController::class, 'isiKonsul'])->name('my-consultation.isi-konsul');
+        Route::put('/my-consultation/{consul:id}/simpan-konsultasi', [ConsultationController::class, 'simpanKonsul'])->name('my-consultation.simpan-konsul');
+        Route::post('/my-consultation/list', [ConsultationController::class, 'addList'])->name('my-consultation.list-store');
+        Route::resource('/my-consultation', ConsultationController::class);
     });
 });

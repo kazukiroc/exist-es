@@ -2,25 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Result extends Model
+class Result extends Pivot
 {
-    use HasFactory;
+    protected $table = 'results';
     protected $guarded = ['id'];
-    public function consul()
-    {
-        $this->belongsTo(Consul::class, 'id_consul');
-    }
+//    public $timestamps = false;
 
-    public function user()
+    public function user(): BelongsTo
     {
-        $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
-    public function knowledge()
-    {
-        $this->belongsTo(Knowledge::class, 'id_knowledge');
-    }
-
 }

@@ -19,7 +19,7 @@
             <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
                     <div>
-                        <h5 class="mr-3 font-semibold">Daftar Konsultasi Anda</h5>
+                        <h5 class="mr-3 font-semibold">Daftar Konsultasi</h5>
                         <p class="text-gray-500">Kelola semua data yang ada atau tambah baru</p>
                     </div>
                     <div class="flex gap-4">
@@ -32,10 +32,6 @@
                                 <input type="text" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
                             </div>
                         </div>
-                        <a href="/dashboard/user/my-consultation/list" type="button"
-                           class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
-                            Tambah Konsultasi
-                        </a>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -49,23 +45,23 @@
                         </tr>
                         </thead>
                         <tbody id="exist">
-                        @foreach ($user_consuls as $user_consul)
+                        @foreach ($consuls as $consul)
                             <tr class="border-b">
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3">{{ $user_consul->consul->name }}</td>
-                                <td class="px-4 py-3">{{ $users->where('id',$consuls->where('id', $user_consul->id_consul)->first()->id_expert)->first()->name }}</td>
+                                <td class="px-4 py-3">{{ $consul->name }}</td>
+                                <td class="px-4 py-3">{{ $users->where('id', $consul->id_expert)->first()->name }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex justify-start gap-2">
-                                        @if($results->where('id_consul', $user_consul->id_consul)->where('id_user', auth()->user()->id)->count() != null)
-                                            <a href="/dashboard/user/my-consultation/{{ $user_consul->id_consul }}/isi-konsultasi" type="button" class="font-medium text-yellow-600 hover:underline">Ubah Jawaban</a>
+                                        @if(in_array($consul->id, $user_consuls->where('id_user', auth()->user()->id)->pluck('id_consul')->toArray()))
+                                        sudah ada
                                         @else
-                                            <a href="/dashboard/user/my-consultation/{{ $user_consul->id_consul }}/isi-konsultasi" type="button" class="font-medium text-blue-600 hover:underline">Isi Konsultasi</a>
+                                            <form action="{{route('my-consultation.list-store')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id_user" value="{{auth()->user()->id}}">
+                                                <input type="hidden" name="id_consul" value="{{$consul->id}}">
+                                                <button type="submit" class="font-medium text-blue-600 hover:underline">Tambah Konsultasi</button>
+                                            </form>
                                         @endif
-                                        <form action="/dashboard/user/my-consultation/{{ $user_consul->id }}" method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>
-                                        </form>
                                     </div>
                                 </td>
                             </tr>
