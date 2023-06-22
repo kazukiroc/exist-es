@@ -53,7 +53,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
         Route::resource('/rekomendasi', ReccomendationController::class);
         Route::resource('/exp-consultation', ExpertConsultationController::class);
         Route::get('/exp-consultation/{consul:id}/pertanyaan', [ExpertConsultationController::class, 'tambahPertanyaan'])->name('tambah-tanya');
-//        Route::get('/exp-consultation/{consul:id}/pertanyaan/edit', [ExpertConsultationController::class, 'editPertanyaan'])->name('ubah-tanya');
         Route::put('/exp-consultation/{consul:id}/pertanyaan', [ExpertConsultationController::class, 'simpanPertanyaan'])->name('simpan-tanya');
 
     });

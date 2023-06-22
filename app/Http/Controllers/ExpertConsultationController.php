@@ -7,6 +7,7 @@ use App\Models\Consul;
 use App\Models\ConsulMap;
 use App\Models\Intelligence;
 use App\Models\Reccomendation;
+use App\Models\Study;
 use Illuminate\Http\Request;
 
 class ExpertConsultationController extends Controller
@@ -35,6 +36,27 @@ class ExpertConsultationController extends Controller
 
         return redirect(route('exp-consultation.index'))->with('success', 'Data berhasil ditambahkan!');
     }
+    public function edit(string $id)
+    {
+        $consul = Consul::findOrFail($id);
+        return view('dashboard.consultation.expert.edit', [
+            'consul' => $consul
+        ]);
+    }
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $consul = Consul::findOrFail($id);
+
+        $consul->update([
+            'name' => $request->name
+        ]);
+
+        return redirect(route('exp-consultation.index'))->with('success', 'Data berhasil diubah!');
+    }
     public function tambahPertanyaan(string $id)
     {
         $consul = Consul::findOrFail($id);
@@ -51,5 +73,13 @@ class ExpertConsultationController extends Controller
         $consul->characters()->sync($request->character);
 
         return redirect(route('exp-consultation.index'))->with('success', 'Data berhasil disimpan!');
+    }
+    public function destroy($id)
+    {
+        $consul = Consul::findOrFail($id);
+        $consul->characters()->detach();
+        $consul->delete();
+
+        return redirect(route('exp-consultation.index'))->with('success', 'Data berhasil dihapus!');
     }
 }

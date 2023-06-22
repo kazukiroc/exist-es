@@ -105,15 +105,14 @@
 {{--                                    {!! {{$consul_maps->where('id_consul', $consul->id)->count() != null ? "<a href='/dashboard/expert/exp-consultation/$consul->id/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>$consul_maps->where('id_consul', $consul->id)->count()</a>" : "<a href='/dashboard/expert/exp-consultation/$consul->id/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>Atur Pertanyaan</a>" !!}--}}
                                 </td>
                                 <td class="px-4 py-3">
-                                    maaf
-{{--                                    <div class="flex justify-end gap-2">--}}
-{{--                                        <a href="/dashboard/expert/characteristic/{{ $characteristic->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>--}}
-{{--                                        <form action="/dashboard/expert/characteristic/{{ $characteristic->id }}" method="POST">--}}
-{{--                                            @method('delete')--}}
-{{--                                            @csrf--}}
-{{--                                            <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>--}}
-{{--                                        </form>--}}
-{{--                                    </div>--}}
+                                    <div class="flex justify-start gap-2">
+                                        <a href="/dashboard/expert/exp-consultation/{{ $consul->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
+                                        <form action="/dashboard/expert/exp-consultation/{{ $consul->id }}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
