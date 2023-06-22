@@ -34,5 +34,11 @@ class Characteristic extends Model
 //            ->withPivot(['team_id', 'user_type'])
             ->using(Knowledge::class);
     }
+    public function consuls(): BelongsToMany
+    {
+        return $this->belongsToMany(Consul::class, 'consul_map', 'id_character', 'id_consul')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(ConsulMap::class);
+    }
 
 }

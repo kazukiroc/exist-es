@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Consul extends Model
 {
@@ -18,6 +19,12 @@ class Consul extends Model
     public function result()
     {
         $this->hasMany(Result::class, 'id_consul');
+    }
+    public function characters(): BelongsToMany
+    {
+        return $this->belongsToMany(Characteristic::class, 'consul_map', 'id_consul', 'id_character')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(ConsulMap::class);
     }
 
 }

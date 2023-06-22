@@ -56,7 +56,7 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </section>--}}
-        <section class="bg-white mt-10 shadow-md rounded-lg overflow-hidden">
+        <section class="bg-white mt-20 shadow-md rounded-lg overflow-hidden">
             <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
                     <div>
@@ -73,7 +73,7 @@
                                 <input type="text" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
                             </div>
                         </div>
-                        <a href="/dashboard/expert/consultation/create" type="button" data-modal-target="tambahData" data-modal-show="tambahData"
+                        <a href="/dashboard/expert/exp-consultation/create" type="button" data-modal-target="tambahData" data-modal-show="tambahData"
                            class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
                             Tambah Data
                         </a>
@@ -86,6 +86,7 @@
                             <th scope="col" class="px-4 py-3">#</th>
                             <th scope="col" class="px-4 py-3">Nama Konsultasi</th>
                             <th scope="col" class="px-4 py-3">Jumlah User</th>
+                            <th scope="col" class="px-4 py-3">Jumlah Pertanyaan</th>
                             <th scope="col" class="px-4 py-3">Aksi</th>
                         </tr>
                         </thead>
@@ -94,13 +95,25 @@
                             <tr class="border-b">
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $loop->iteration }}</td>
                                 <td class="px-4 py-3">{{ $consul->name }}</td>
+                                <td class="px-4 py-3">Kosong</td>
                                 <td class="px-4 py-3">
-                                    <select data-te-select-init name="pilihan" id="pilihan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5" required>
-                                        <option value="1">Sangat Tidak Setuju</option>
-                                        <option value="2">Tidak Setuju</option>
-                                        <option value="3">Kurang Setuju</option>
-                                        <option value="3">Setuju</option>
-                                    </select>
+                                    @if($consul_maps->where('id_consul', $consul->id)->count() != null)
+                                        <a href='/dashboard/expert/exp-consultation/{{$consul->id}}/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>{{$consul_maps->where('id_consul', $consul->id)->count()}} (Ubah)</a>
+                                    @else
+                                        <a href='/dashboard/expert/exp-consultation/{{$consul->id}}/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>Atur Pertanyaan</a>
+                                    @endif
+{{--                                    {!! {{$consul_maps->where('id_consul', $consul->id)->count() != null ? "<a href='/dashboard/expert/exp-consultation/$consul->id/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>$consul_maps->where('id_consul', $consul->id)->count()</a>" : "<a href='/dashboard/expert/exp-consultation/$consul->id/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>Atur Pertanyaan</a>" !!}--}}
+                                </td>
+                                <td class="px-4 py-3">
+                                    maaf
+{{--                                    <div class="flex justify-end gap-2">--}}
+{{--                                        <a href="/dashboard/expert/characteristic/{{ $characteristic->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>--}}
+{{--                                        <form action="/dashboard/expert/characteristic/{{ $characteristic->id }}" method="POST">--}}
+{{--                                            @method('delete')--}}
+{{--                                            @csrf--}}
+{{--                                            <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>--}}
+{{--                                        </form>--}}
+{{--                                    </div>--}}
                                 </td>
                             </tr>
                         @endforeach

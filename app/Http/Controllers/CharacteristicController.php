@@ -75,7 +75,7 @@ class CharacteristicController extends Controller
             'ciri' => $request->ciri
         ]);
 
-        return redirect()->back()->with('success', 'Data berhasil diubah!');
+        return redirect(route('characteristic.index'))->with('success', 'Data berhasil diubah!');
     }
 
     /**

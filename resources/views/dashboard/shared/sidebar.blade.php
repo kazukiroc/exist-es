@@ -28,7 +28,7 @@
             @role('expert')
             <li class="fw-semi-bold text-dark">Menu Pakar</li>
             <li>
-                <a href="/dashboard/expert/consultation" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('*consultation') ? 'bg-indigo-200' : '' }}">
+                <a href="{{route('exp-consultation.index')}}" class="flex items-center p-2 text-indigo-900 rounded-lg hover:bg-indigo-200 {{ Request::is('*consultation') ? 'bg-indigo-200' : '' }}">
                     <ion-icon name="library" class="w-6 h-6 text-indigo-900 transition duration-75 group-hover:text-indigo-900" fill="currentColor"></ion-icon>
                     <span class="flex-1 ml-3 whitespace-nowrap">Konsultasi</span>
                 </a>
