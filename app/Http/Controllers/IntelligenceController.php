@@ -36,15 +36,15 @@ class IntelligenceController extends Controller
         $validatedData = $request->validate([
             'kode' => 'required',
             'jenis' => 'required',
-            'prodi' => 'required'
+//            'prodi' => 'required'
         ]);
 
-        $prodi = $validatedData['prodi'];
-        $validatedData['prodi'] = implode(',', $prodi);
+//        $prodi = $validatedData['prodi'];
+//        $validatedData['prodi'] = implode(',', $prodi);
 
         Intelligence::create($validatedData);
 
-        return redirect('/intelligence')->with('success', 'Data berhasil ditambahkan!');
+        return redirect(route('intelligence.index'))->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -74,7 +74,7 @@ class IntelligenceController extends Controller
     {
         $validatedData = $request->validate([
             'jenis' => 'required',
-            'prodi' => 'required'
+//            'prodi' => 'required'
         ]);
 
 
@@ -82,10 +82,10 @@ class IntelligenceController extends Controller
 
         $intelligences->update([
             'jenis' => $request->jenis,
-            'prodi' => $request->prodi
+//            'prodi' => $request->prodi
         ]);
 
-        return redirect('/intelligence')->with('success', 'Data berhasil diubah!');
+        return redirect(route('intelligence.index'))->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -97,6 +97,6 @@ class IntelligenceController extends Controller
 
         $intelligences->delete();
 
-        return redirect('/intelligence')->with('success', 'Data berhasil dihapus!');
+        return redirect(route('intelligence.index'))->with('success', 'Data berhasil dihapus!');
     }
 }

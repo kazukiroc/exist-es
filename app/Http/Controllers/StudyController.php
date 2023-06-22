@@ -39,7 +39,7 @@ class StudyController extends Controller
 
         Study::create($validatedData);
 
-        return redirect('/study')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/dashboard/expert/study')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -77,7 +77,7 @@ class StudyController extends Controller
             'keterangan' => $request->keterangan
         ]);
 
-        return redirect('/study')->with('success', 'Data berhasil diubah!');
+        return redirect('/dashboard/expert/study')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -89,6 +89,6 @@ class StudyController extends Controller
 
         $studies->delete();
 
-        return redirect('/study')->with('success', 'Data berhasil dihapus!');
+        return redirect('/dashboard/expert/study')->with('success', 'Data berhasil dihapus!');
     }
 }

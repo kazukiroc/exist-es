@@ -2,21 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Reccomendation extends Model
+class Reccomendation extends Pivot
 {
-    use HasFactory;
+    protected $table = 'reccomendations';
     protected $guarded = ['id'];
-
-    public function study()
-    {
-        $this->belongsTo(Study::class, 'id_study');
-    }
-    public function intteligence()
-    {
-        $this->belongsTo(Intelligence::class, 'id_intelligence');
-    }
-
+    public $timestamps = false;
 }

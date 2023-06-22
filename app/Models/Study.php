@@ -15,9 +15,15 @@ class Study extends Model
     // ];
     protected $guarded = ['id'];
 
-    public function reccomendation()
+//    public function reccomendation()
+//    {
+//        $this->hasMany(oldReccomendation::class, 'id_study');
+//    }
+    public function intelligences(): BelongsToMany
     {
-        $this->hasMany(Reccomendation::class, 'id_study');
+        return $this->belongsToMany(Intelligence::class, 'reccomendations', 'id_study', 'id_intelligence')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(Reccomendation::class);
     }
 
 }

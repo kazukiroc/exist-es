@@ -39,7 +39,7 @@ class CharacteristicController extends Controller
 
         Characteristic::create($validatedData);
 
-        return redirect('/characteristic')->with('success', 'Data berhasil ditambahkan!');
+        return redirect(route('characteristic.index'))->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -75,7 +75,7 @@ class CharacteristicController extends Controller
             'ciri' => $request->ciri
         ]);
 
-        return redirect('/characteristic')->with('success', 'Data berhasil diubah!');
+        return redirect()->back()->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -87,6 +87,6 @@ class CharacteristicController extends Controller
 
         $characteristics->delete();
 
-        return redirect('/characteristic')->with('success', 'Data berhasil dihapus!');
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }

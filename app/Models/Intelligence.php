@@ -20,9 +20,23 @@ class Intelligence extends Model
     {
         $this->hasMany(Knowledge::class, 'id_intelligence');
     }
-    public function reccomendation()
+//    public function reccomendation()
+//    {
+//        $this->hasMany(oldReccomendation::class, 'id_intelligence');
+//    }
+
+    public function studies(): BelongsToMany
     {
-        $this->hasMany(Reccomendation::class, 'id_intelligence');
+        return $this->belongsToMany(Study::class, 'reccomendations', 'id_intelligence', 'id_study')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(Reccomendation::class);
+    }
+    public static function generateKode(){
+        $lastKode = Intelligence::select('kode')->orderBy('id','desc')->first()->kode;
+        $nextId = (int)substr($lastKode, 1) + 1;
+//        $lastCompanyId=(int)substr($lastCompanyId , -3);
+        $generatedKode = 'I'.$nextId;
+        return $generatedKode;
     }
 
 }

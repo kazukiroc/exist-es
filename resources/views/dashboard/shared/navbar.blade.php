@@ -6,7 +6,7 @@
                     <span class="sr-only">Open sidebar</span>
                     <ion-icon name="reorder-four" class="w-6 h-6 text-indigo-600"></ion-icon>
                 </button>
-                <img src="../../assets/exist.png" class="h-16" alt="Exist Logo" />
+                <img src="/assets/exist.png" class="h-16" alt="Exist Logo" />
             </div>
             <div class="flex items-center ml-3">
                 <button type="button" class="flex text-sm rounded-full focus:ring-4 focus:ring-indigo-900" aria-expanded="false" data-dropdown-toggle="dropdown-user">

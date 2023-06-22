@@ -33,7 +33,7 @@
                             <input type="text" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
                         </div>
                     </div>
-                    <a href="/intelligence/create" type="button" data-modal-target="tambahData" data-modal-show="tambahData"
+                    <a href="/dashboard/expert/intelligence/create" type="button" data-modal-target="tambahData" data-modal-show="tambahData"
                         class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
                         Tambah Data
                     </a>
@@ -45,7 +45,7 @@
                         <tr>
                             <th scope="col" class="px-4 py-3">Kode</th>
                             <th scope="col" class="px-4 py-3">Jenis Kecerdasan</th>
-                            <th scope="col" class="px-4 py-3">Program Studi</th>
+{{--                            <th scope="col" class="px-4 py-3">Program Studi</th>--}}
                             <th scope="col" class="px-4 py-3">
                                 <span class="sr-only">Aksi</span>
                             </th>
@@ -56,11 +56,11 @@
                         <tr class="border-b">
                             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $intelligence->kode }}</th>
                             <td class="px-4 py-3">{{ $intelligence->jenis }}</td>
-                            <td class="px-4 py-3">{!! str_replace(['"','[',']',','],['','','','<br>'],$intelligence->prodi) !!}</td>
+{{--                            <td class="px-4 py-3">{!! str_replace(['"','[',']',','],['','','','<br>'],$intelligence->prodi) !!}</td>--}}
                             <td class="px-4 py-3">
                                 <div class="flex justify-end gap-2">
-                                    <a href="/intelligence/{{ $intelligence->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
-                                    <form action="/intelligence/{{ $intelligence->id }}" method="POST">
+                                    <a href="/dashboard/expert/intelligence/{{ $intelligence->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
+                                    <form action="/dashboard/expert/intelligence/{{ $intelligence->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>

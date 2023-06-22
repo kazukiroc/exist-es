@@ -3,14 +3,14 @@
 @section('content')
 <div class="p-12 sm:ml-64">
     <section class="bg-white mt-20 shadow-md rounded-lg max-w-md">
-        <form action="/characteristic/{{ $characteristics->id }}" method="POST" class="relative bg-white rounded-lg shadow">
+        <form action="/dashboard/expert/characteristic/{{ $characteristics->id }}" method="POST" class="relative bg-white rounded-lg shadow">
             @method('put')
             @csrf
             <div class="flex items-start justify-between p-4 border-b rounded-t">
                 <h3 class="text-xl font-semibold text-gray-900">
                     Ubah Data
                 </h3>
-                <a href="/characteristic" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                <a href="/dashboard/expert/characteristic" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
                     <ion-icon name="arrow-back" class="w-5 h-5" fill="currentColor"></ion-icon>
                 </a>
             </div>
