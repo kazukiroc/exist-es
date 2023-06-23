@@ -53,7 +53,7 @@
                                 <td class="px-4 py-3">
                                     <div class="flex justify-start gap-2">
                                         @if(in_array($consul->id, $user_consuls->where('id_user', auth()->user()->id)->pluck('id_consul')->toArray()))
-                                        sudah ada
+                                        Telah Dipilih
                                         @else
                                             <form action="{{route('my-consultation.list-store')}}" method="POST">
                                                 @csrf

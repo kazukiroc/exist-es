@@ -95,7 +95,7 @@
                             <tr class="border-b">
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $loop->iteration }}</td>
                                 <td class="px-4 py-3">{{ $consul->name }}</td>
-                                <td class="px-4 py-3">Kosong</td>
+                                <td class="px-4 py-3">{{$user_consuls->where('id_consul', $consul->id)->count()}}</td>
                                 <td class="px-4 py-3">
                                     @if($consul_maps->where('id_consul', $consul->id)->count() != null)
                                         <a href='/dashboard/expert/exp-consultation/{{$consul->id}}/pertanyaan' type='button' class='font-medium text-blue-600 hover:underline'>{{$consul_maps->where('id_consul', $consul->id)->count()}} (Ubah)</a>

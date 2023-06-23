@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Consul;
 use App\Models\ConsulMap;
 use App\Models\Intelligence;
+use App\Models\Knowledge;
+use App\Models\Reccomendation;
 use App\Models\Result;
+use App\Models\Study;
 use App\Models\UserConsul;
 use Illuminate\Http\Request;
 use App\Models\Characteristic;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class ConsultationController extends Controller
 {
@@ -72,6 +77,9 @@ class ConsultationController extends Controller
     public function destroy($id)
     {
         $user_consul = UserConsul::findOrFail($id);
+        $consul = Consul::findOrFail($user_consul->id_consul);
+//        $consul->characters()->detach();
+        $consul->characterResults()->detach();
         $user_consul->delete();
 
         return redirect()->back()->with('success', 'Data berhasil dihapus!');
@@ -121,5 +129,33 @@ class ConsultationController extends Controller
         }
 //        $consul->characterResults()->sync($request->skor);
         return redirect(route('my-consultation.index'))->with('success', 'Anda berhasil mengisi konsultasi!');
+    }
+    public function hasilKonsul($id)
+    {
+        $consul = Consul::findOrFail($id);
+        $user = User::find(auth()->user()->id);
+        $knowledges = Knowledge::all();
+
+        $final = DB::table('knowledge')
+            ->join('results', 'knowledge.id_character', '=', 'results.id_character')
+//            ->join('orders', 'users.id', '=', 'orders.user_id')
+//            ->join('reccomendations', 'knowledge.id_intelligence', '=', 'reccomendations.id_intelligence')
+            ->where('results.id_consul', '=', $id)
+            ->select('knowledge.id_intelligence', 'results.id_consul', 'results.id_user', DB::raw('SUM(skor) as total_skor'))
+            ->groupBy('id_intelligence')
+//            ->having('total_skor', '>', '')
+            ->get();
+        return dd($final);
+        return view('dashboard.consultation.user.hasil', [
+            'results' => $final->where('skor', max($final->skor))->get(), //??
+            'intelligences' => Intelligence::all(),
+            'studies' => Study::all(),
+            'reccomendations' => Reccomendation::all(),
+            'consul' => $consul,
+            'user' => $user
+        ]);
+
+
+//        return redirect(route('my-consultation.hasil'))->with('success', 'Anda berhasil mengisi konsultasi!');
     }
 }

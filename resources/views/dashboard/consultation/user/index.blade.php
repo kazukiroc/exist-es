@@ -58,10 +58,11 @@
                                     <div class="flex justify-start gap-2">
                                         @if($results->where('id_consul', $user_consul->id_consul)->where('id_user', auth()->user()->id)->count() != null)
                                             <a href="/dashboard/user/my-consultation/{{ $user_consul->id_consul }}/isi-konsultasi" type="button" class="font-medium text-yellow-600 hover:underline">Ubah Jawaban</a>
+                                            <a href="/dashboard/user/my-consultation/{{ $user_consul->id_consul }}/hasil" type="button" class="font-medium text-green-600 hover:underline">Lihat Hasil</a>
                                         @else
                                             <a href="/dashboard/user/my-consultation/{{ $user_consul->id_consul }}/isi-konsultasi" type="button" class="font-medium text-blue-600 hover:underline">Isi Konsultasi</a>
                                         @endif
-                                        <form action="/dashboard/user/my-consultation/{{ $user_consul->id }}" method="POST">
+                                            <form action="/dashboard/user/my-consultation/{{ $user_consul->id }}" method="POST">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>

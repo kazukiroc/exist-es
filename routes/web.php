@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
     Route::group( ['prefix' => 'user', 'middleware' => ['role:user']], function () {
         Route::get('/my-consultation/list', [ConsultationController::class, 'list'])->name('my-consultation.list-index');
         Route::get('/my-consultation/{consul:id}/isi-konsultasi', [ConsultationController::class, 'isiKonsul'])->name('my-consultation.isi-konsul');
+        Route::get('/my-consultation/{consul:id}/hasil', [ConsultationController::class, 'hasilKonsul'])->name('my-consultation.hasil');
         Route::put('/my-consultation/{consul:id}/simpan-konsultasi', [ConsultationController::class, 'simpanKonsul'])->name('my-consultation.simpan-konsul');
         Route::post('/my-consultation/list', [ConsultationController::class, 'addList'])->name('my-consultation.list-store');
         Route::resource('/my-consultation', ConsultationController::class);

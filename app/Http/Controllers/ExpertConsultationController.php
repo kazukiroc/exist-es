@@ -8,6 +8,7 @@ use App\Models\ConsulMap;
 use App\Models\Intelligence;
 use App\Models\Reccomendation;
 use App\Models\Study;
+use App\Models\UserConsul;
 use Illuminate\Http\Request;
 
 class ExpertConsultationController extends Controller
@@ -16,7 +17,8 @@ class ExpertConsultationController extends Controller
     {
         return view('dashboard.consultation.expert.index', [
             'consuls' => Consul::where('id_expert', auth()->user()->id)->latest()->get(),
-            'consul_maps' => ConsulMap::all()
+            'consul_maps' => ConsulMap::all(),
+            'user_consuls' => UserConsul::all()
         ]);
     }
     public function create()
