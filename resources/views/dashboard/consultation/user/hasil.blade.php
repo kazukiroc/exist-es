@@ -53,10 +53,10 @@
                             @foreach ($results as $result)
                                 <tr class="border-b">
                                     {{--                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $result->kode }}</th>--}}
-                                    <td class="px-4 py-3">{{ $result->id_intelligence }}</td>
+                                    <td class="px-4 py-3">{{ $intelligences->find($result->id_intelligence)->jenis }}</td>
                                     <td class="px-4 py-3">
                                         <ul>
-                                                @foreach($intelligences->where('id', $result->id_intelligence)->studies as $study)
+                                                @foreach($intelligences->find($result->id_intelligence)->studies as $study)
                                                     <li>
                                                         {{$study->nama}}
                                                     </li>

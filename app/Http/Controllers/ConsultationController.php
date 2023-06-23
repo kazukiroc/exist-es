@@ -145,9 +145,10 @@ class ConsultationController extends Controller
             ->groupBy('id_intelligence')
 //            ->having('total_skor', '>', '')
             ->get();
-        return dd($final);
+        $skorArray = $final->pluck('total_skor');
+//        return dd($final->where('total_skor', $skorArray->max()));
         return view('dashboard.consultation.user.hasil', [
-            'results' => $final->where('skor', max($final->skor))->get(), //??
+            'results' => $final->where('total_skor', $skorArray->max()), //??
             'intelligences' => Intelligence::all(),
             'studies' => Study::all(),
             'reccomendations' => Reccomendation::all(),
