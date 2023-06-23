@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Contracts\LaratrustUser;
 use Laratrust\Traits\HasRolesAndPermissions;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements LaratrustUser
 {
@@ -51,4 +52,9 @@ class User extends Authenticatable implements LaratrustUser
     {
         $this->hasMany(Result::class, 'id_user');
     }
+    public function userConsuls(): HasMany
+    {
+        return $this->hasMany(UserConsul::class, 'id_user');
+    }
+
 }

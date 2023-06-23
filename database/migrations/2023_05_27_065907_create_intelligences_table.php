@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('kode');
             $table->string('jenis');
-            $table->string('prodi');
             $table->timestamps();
         });
     }

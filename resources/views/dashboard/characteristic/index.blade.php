@@ -32,7 +32,7 @@
                             <input type="text" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
                         </div>
                     </div>
-                    <a href="/characteristic/create" type="button"
+                    <a href="/dashboard/expert/characteristic/create" type="button"
                         class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
                         Tambah Data
                     </a>
@@ -56,8 +56,8 @@
                             <td class="px-4 py-3">{{ $characteristic->ciri }}</td>
                             <td class="px-4 py-3">
                                 <div class="flex justify-end gap-2">
-                                    <a href="/characteristic/{{ $characteristic->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
-                                    <form action="/characteristic/{{ $characteristic->id }}" method="POST">
+                                    <a href="/dashboard/expert/characteristic/{{ $characteristic->id }}/edit" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
+                                    <form action="/dashboard/expert/characteristic/{{ $characteristic->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>

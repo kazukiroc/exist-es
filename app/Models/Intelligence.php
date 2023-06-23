@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Intelligence extends Model
 {
@@ -20,9 +22,30 @@ class Intelligence extends Model
     {
         $this->hasMany(Knowledge::class, 'id_intelligence');
     }
-    public function reccomendation()
+//    public function reccomendation()
+//    {
+//        $this->hasMany(oldReccomendation::class, 'id_intelligence');
+//    }
+
+    public function studies(): BelongsToMany
     {
-        $this->hasMany(Reccomendation::class, 'id_intelligence');
+        return $this->belongsToMany(Study::class, 'reccomendations', 'id_intelligence', 'id_study')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(Reccomendation::class);
+    }
+    public static function generateKode(){
+        $lastKode = Intelligence::select('kode')->orderBy('id','desc')->first()->kode;
+        $nextId = (int)substr($lastKode, 1) + 1;
+//        $lastCompanyId=(int)substr($lastCompanyId , -3);
+        $generatedKode = 'I'.$nextId;
+        return $generatedKode;
+    }
+
+    public function characters(): BelongsToMany
+    {
+        return $this->belongsToMany(Characteristic::class, 'knowledge', 'id_intelligence', 'id_character')
+//            ->withPivot(['team_id', 'user_type'])
+            ->using(Knowledge::class);
     }
 
 }

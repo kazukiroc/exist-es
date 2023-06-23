@@ -20,7 +20,7 @@
                 <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
                         <div>
-                            <h5 class="mr-3 font-semibold">Basis Pengetahuan</h5>
+                            <h5 class="mr-3 font-semibold">Rekomendasi Kecerdasan & Jurusan</h5>
                             <p class="text-gray-500">Kelola semua data yang ada atau tambah baru</p>
                         </div>
                         <div class="flex gap-4">
@@ -33,10 +33,10 @@
                                     <input type="text" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search">
                                 </div>
                             </div>
-                            {{--                            <a href="/dashboard/expert/rekomendasi/create" type="button" data-modal-target="tambahData" data-modal-show="tambahData"--}}
-                            {{--                               class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">--}}
-                            {{--                                Tambah Data--}}
-                            {{--                            </a>--}}
+{{--                            <a href="/dashboard/expert/rekomendasi/create" type="button" data-modal-target="tambahData" data-modal-show="tambahData"--}}
+{{--                               class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">--}}
+{{--                                Tambah Data--}}
+{{--                            </a>--}}
                         </div>
                     </div>
                     <div class="overflow-x-auto h-96">
@@ -44,7 +44,7 @@
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-4 py-3">Jenis Kecerdasan</th>
-                                <th scope="col" class="px-4 py-3">Minat Bakat</th>
+                                <th scope="col" class="px-4 py-3">Program Studi</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Aksi</span>
                                 </th>
@@ -53,16 +53,16 @@
                             <tbody id="exist">
                             @foreach ($intelligences as $intelligence)
                                 <tr class="border-b">
-                                    {{--                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $intelligence->kode }}</th>--}}
+{{--                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $intelligence->kode }}</th>--}}
                                     <td class="px-4 py-3">{{ $intelligence->jenis }}</td>
                                     <td class="px-4 py-3">
                                         <ul>
-                                            @if($intelligence->characters->count() < 1)
-                                                Data Minat Bakat Masih Kosong
+                                            @if($intelligence->studies->count() < 1)
+                                                Data Program Studi Masih Kosong
                                             @else
-                                                @foreach($intelligence->characters as $character)
+                                                @foreach($intelligence->studies as $study)
                                                     <li>
-                                                        {{$character->kode . ' : ' . $character->ciri}}
+                                                        {{$study->nama}}
                                                     </li>
                                                 @endforeach
                                             @endif
@@ -71,9 +71,9 @@
                                     {{--                            <td class="px-4 py-3">{!! str_replace(['"','[',']',','],['','','','<br>'],$intelligence->prodi) !!}</td>--}}
                                     <td class="px-4 py-3">
                                         <div class="flex justify-end gap-2">
-                                            <a href="{{route('knowledge.edit', ['knowledge' => $intelligence->id])}}" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
-                                            @if(in_array($intelligence->id, $knowledges->pluck('id_intelligence')->toArray()))
-                                                <form action="/dashboard/expert/knowledge/{{ $intelligence->id }}" method="POST">
+                                            <a href="{{route('rekomendasi.edit', ['rekomendasi' => $intelligence->id])}}" type="button" class="font-medium text-blue-600 hover:underline">Ubah</a>
+                                            @if(in_array($intelligence->id, $reccomendations->pluck('id_intelligence')->toArray()))
+                                                <form action="/dashboard/expert/rekomendasi/{{ $intelligence->id }}" method="POST">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>
