@@ -42,7 +42,7 @@
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $loop->iteration }}</td>
                                 <td class="px-4 py-3">{{ $character->ciri }}</td>
                                 <td class="px-4 py-3">
-                                    <select data-te-select-init name="skor[]" id="skor" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5" required>
+                                    <select data-te-select-init name="skor[]" id="skor" class="text-neutral-50 bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5" required>
                                         @if($results->where('id_consul', $consul->id)->where('id_user', auth()->user()->id)->count() > 0)
                                             <option value="1" {{$results->where('id_consul', $consul->id)->where('id_user', auth()->user()->id)->where('id_character', $character->id)->first()->skor == 1 ? 'selected' : ''}}>Sangat Tidak Setuju</option>
                                             <option value="2" {{$results->where('id_consul', $consul->id)->where('id_user', auth()->user()->id)->where('id_character', $character->id)->first()->skor == 2 ? 'selected' : ''}}>Tidak Setuju</option>

@@ -47,7 +47,7 @@
                         <tr>
                             <th scope="col" class="px-4 py-3">Kode</th>
                             <th scope="col" class="px-4 py-3">Minat Bakat</th>
-                            <th scope="col" class="px-4 py-3">Pakai</th>
+                            <th scope="col" class="px-4 py-3 d-flex text-center">Pilih Semua <input type="checkbox" class="check d-inline" id="checkAll"></th>
                         </tr>
                         </thead>
                         <tbody id="exist">
@@ -55,9 +55,9 @@
                             <tr class="border-b">
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $character->kode }}</td>
                                 <td class="px-4 py-3">{{ $character->ciri }}</td>
-                                <td class="px-4 py-3">
+                                <td class="px-4 py-3 d-flex text-center">
                                     <label for="character{{$character->id}}"></label>
-                                    <input type="checkbox" value="{{$character->id}}" name="character[]" id="character{{$character->id}}" {{in_array($character->id, $consul_maps->where('id_consul', $consul->id)->pluck('id_character')->toArray()) ? 'checked' : ''}}>
+                                    <input class="check" type="checkbox" value="{{$character->id}}" name="character[]" id="character{{$character->id}}" {{in_array($character->id, $consul_maps->where('id_consul', $consul->id)->pluck('id_character')->toArray()) ? 'checked' : ''}}>
                                 </td>
                             </tr>
                         @endforeach
@@ -81,6 +81,11 @@
                         .toLowerCase().indexOf(value) > -1)
                 });
             });
+        });
+    </script>
+    <script>
+        $("#checkAll").click(function () {
+            $(".check").prop('checked', $(this).prop('checked'));
         });
     </script>
 
