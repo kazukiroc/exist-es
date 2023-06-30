@@ -163,10 +163,6 @@ class KnowledgeSeeder extends Seeder
         ]);
         DB::table('knowledge')->insert([
             'id_intelligence' => '8',
-            'id_character' => '45',
-        ]);
-        DB::table('knowledge')->insert([
-            'id_intelligence' => '8',
             'id_character' => '46',
         ]);
         DB::table('knowledge')->insert([

@@ -174,11 +174,11 @@ class RecommendationsSeeder extends Seeder
             'id_study' => '45',
         ]);
         DB::table('reccomendations')->insert([
-            'id_intelligence' => '12',
+            'id_intelligence' => '13',
             'id_study' => '46',
         ]);
         DB::table('reccomendations')->insert([
-            'id_intelligence' => '12',
+            'id_intelligence' => '13',
             'id_study' => '47',
         ]);
     }
